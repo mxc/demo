@@ -12,8 +12,10 @@ pipeline {
             }
         }
 	stage("docker"){
+	steps{
 		sh "cd docker"
 		sh "docker build . -t mxc/myapp:v1.0"
+		}
 	}
     }
 }
