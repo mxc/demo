@@ -1,4 +1,4 @@
-pipline {
+pipeline {
 	agent any
 	stages {
 		stage("build"){
@@ -11,9 +11,10 @@ pipline {
 			    } 
 		  	}
 			}
-		}
 		stage("dockerbuild") {
-			sh "cp target/MyApp-1.0-SNAPSHOT.jar docker/"
-			
+			steps {
+				sh "cp target/MyApp-1.0-SNAPSHOT.jar docker/"
+			}
 		}
+	}
 }
