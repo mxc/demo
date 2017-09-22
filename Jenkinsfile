@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("build"){
             steps {
-                git url: 'file:..MyApp.git'
+                git url: 'https://github.com/mxc/demo.git'
                 withMaven(
                         maven: 'M3',
                         mavenLocalRepo: '.repository') {
@@ -11,5 +11,9 @@ pipeline {
                     } 
             }
         }
+	stage("docker"){
+		sh "cd docker"
+		sh "docker build . -t mxc/myapp:v1.0"
+	}
     }
 }
